@@ -1,130 +1,222 @@
-header.flex{
-    justify-content: space-between;
-    padding:0 2.4rem ;
-    margin-top: 1.2rem;
+/* ================================
+   HEADER
+================================ */
+
+header.flex {
+  justify-content: space-between;
+  padding: 0 2.4rem;
+  margin-top: 1.2rem;
+  position: relative;
+  z-index: 10;
 }
-header.flex nav{
-    background-color: var(--bgHeader);
-    padding: 0.77rem 1.6rem;
-    border-radius: 55px;
-    box-shadow: 1px 1px 40px #2323242a;
+
+/* ================================
+   NAVIGATION
+================================ */
+
+header.flex nav {
+  background-color: var(--bgHeader);
+  padding: 0.77rem 1.6rem;
+  border-radius: 55px;
+  box-shadow: 1px 1px 40px #2323242a;
 }
+
 header ul.flex {
-    gap : 16px ; 
+  gap: 16px;
 }
+
 header ul li a {
-    color: var(--title);
-    opacity: 0.9;
-    font-size: 0.88rem;
-    font-weight: 500;
+  color: var(--title);
+  opacity: 0.9;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: 0.2s ease;
 }
+
 header ul li a:hover {
-    color: var(--blue);
-    opacity: 1;
-    font-size: 0.9rem;
+  color: var(--blue);
+  opacity: 1;
+  font-size: 0.9rem;
 }
+
+/* ================================
+   BUTTONS
+================================ */
+
 header button {
-   font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
-header button.menu{
+header button.menu {
+  display: none;
+}
+
+/* Theme + Menu buttons */
+
+header .icon-menu,
+header button.mode {
+  background-color: var(--bgHeader);
+  height: 2.4rem;
+  width: 2.4rem;
+  min-width: 2.4rem;
+  border-radius: 50%;
+  justify-content: center;
+  text-align: center;
+  color: var(--subtitle);
+  border: 1px solid rgba(244, 165, 96, 0.249);
+  transition: 0.2s ease;
+}
+
+header .icon-menu:hover,
+header button.mode:hover {
+  color: var(--title);
+  border: 1px solid rgba(244, 165, 96);
+}
+
+/* ================================
+   ICONS
+================================ */
+
+header .icon-close {
+  font-size: 1rem;
+  color: var(--title);
+  transition: 0.3s;
+}
+
+header .icon-sun {
+  color: rgb(255, 165, 0);
+}
+
+header .icon-close:hover {
+  font-size: 1.4rem;
+  color: crimson;
+  rotate: 180deg;
+}
+
+/* ================================
+   MOBILE POPUP
+================================ */
+
+header .fixed {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(40, 40, 48, 0.91);
+  backdrop-filter: blur(4px);
+}
+
+@keyframes mymove {
+  0% {
+    scale: 0;
+  }
+
+  60% {
+    scale: 1.2;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+header .fixed ul.modal {
+  animation: mymove 0.7s 1;
+  width: 75%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--secondary);
+}
+
+header .fixed ul.modal li {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.77rem;
+  padding-top: 0.5rem;
+}
+
+header .fixed ul.modal li:first-child {
+  text-align: right;
+  border: none;
+  padding-bottom: 0;
+  padding-top: 0.2rem;
+  margin-bottom: -1rem;
+}
+
+header .fixed ul.modal li:last-child {
+  border: none;
+}
+
+header .fixed ul.modal li a {
+  font-size: 1rem;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+  header.flex {
+    padding: 0 1.5rem;
+  }
+
+  header.flex nav {
+    padding: 0.7rem 1.1rem;
+  }
+
+  header ul.flex {
+    gap: 11px;
+  }
+
+  header ul li a {
+    font-size: 0.82rem;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+  header.flex {
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  header.flex nav {
     display: none;
-}
-/*Icons Button */
-header .icon-menu , header button.mode{
-    background-color: var(--bgHeader);
-    height: 2.4rem;
-    width: 2.4rem;
-    border-radius: 50%;
-    justify-content: center;
-    text-align: center;
-    color: var(--subtitle);
-    border: 1px solid rgba(244 ,165 ,96 ,0.249);
-    
-}
-header .icon-menu:hover , header button.mode:hover{
-    color: var(--title);
-    border: 1px solid rgba(244 ,165 ,96 );
-    transition: 0.2s;
+  }
 
+  header button.menu {
+    display: flex;
+  }
+
+  header button.mode {
+    display: flex;
+  }
 }
-header .icon-close{
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 400px) {
+  header.flex {
+    padding: 0;
+  }
+
+  header .icon-menu,
+  header button.mode {
+    width: 2.2rem;
+    height: 2.2rem;
+    min-width: 2.2rem;
     font-size: 1rem;
-    color: var(--title);
-    transition: 0.3s;
+  }
+
+  header .fixed ul.modal {
+    width: 88%;
+    padding: 1rem 1.4rem;
+  }
 }
-header .icon-sun{
-    color: rgb(255,165 ,0 );
-}
-header .icon-close:hover{
-    font-size: 1.4rem;
-    color: crimson;
-    rotate: 180deg;
-}
-
-/*POP UP */
-header .fixed{
-    position: fixed;
-    inset: 0;
-    z-index: 11;
-    background:rgba(40 ,40 ,48 ,0.91);
-    backdrop-filter: blur(4px);
-}
-@keyframes mymove{
-    0%{scale: 0;}
-    60%{scale: 1.2;}
-    100%{scale: 1;}
-}
-header .fixed ul.modal{
-    animation: mymove 0.7s 1;
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
-    border-radius: 1rem;
-    padding: 1rem 2rem;
-    background-color: var(--secondary);
-}
-header .fixed ul.modal li{
-    border-bottom:1px solid var(--border) ;
-    padding-bottom: 0.77rem;
-    padding-top: 0.5rem;
-
-}
-header .fixed ul.modal li:first-child{
-    text-align:right;
-    border: none;
-     padding-bottom: 0;
-    padding-top: 0.2rem;
-    margin-bottom: -1rem;
-
-}
-header .fixed ul.modal li:last-child{
-    border: none;
-    
-}
-
-header .fixed ul.modal li a{
-    font-size: 1rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media  (max-width: 700px) {
-    header.flex nav{
-        display: none;
-    }
-    header button.menu{
-    display: block;
-}
-    }

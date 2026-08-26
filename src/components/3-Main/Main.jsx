@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 // @ts-ignore
 import "./Main.css";
@@ -40,16 +39,22 @@ const Main = () => {
   return (
     <main className="flex">
 
+      {/* =========================
+          FILTER BUTTONS
+      ========================== */}
+
       <section className="flex left-section">
 
         <button
+          type="button"
           onClick={() => SetCurrentactive("all")}
           className={currentactive === "all" ? "active" : ""}
         >
-          all projects
+          All Projects
         </button>
 
         <button
+          type="button"
           onClick={() => SetCurrentactive("React & Laravel")}
           className={
             currentactive === "React & Laravel"
@@ -61,6 +66,7 @@ const Main = () => {
         </button>
 
         <button
+          type="button"
           onClick={() => SetCurrentactive("React")}
           className={
             currentactive === "React"
@@ -71,86 +77,85 @@ const Main = () => {
           React
         </button>
 
-        
-
       </section>
+
+
+      {/* =========================
+          PROJECT CARDS
+      ========================== */}
 
       <section className="flex right-section">
 
-        {filteredProjects.map((item) => {
-          return (
-            <article
-              key={item.id}
-              className="card"
-            >
+        {filteredProjects.map((item) => (
+          <article
+            key={item.id}
+            className="card"
+          >
 
-              <img
-                width={266}
-                src={item.image}
-                alt={item.title}
-              />
+            <img
+              src={item.image}
+              alt={item.title}
+            />
 
-              <div
-                style={{ width: "266px" }}
-                className="box"
-              >
 
-                <h1 className="title">
-                  {item.title}
-                </h1>
+            <div className="box">
 
-                <p className="sub-title">
-                  {item.description}
-                </p>
+              <h1 className="title">
+                {item.title}
+              </h1>
 
-                <div className="flex icons">
 
-                  <div
-                    style={{ gap: "11px" }}
-                    className="flex"
-                  >
+              <p className="sub-title">
+                {item.description}
+              </p>
 
-                    <a
-                      className="icon-link"
-                      href={item.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${item.title} live demo`}
-                    ></a>
 
-                    {item.github && (
-                      <a
-                        className="icon-github"
-                        href={item.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${item.title} GitHub`}
-                      ></a>
-                    )}
+              <div className="flex icons">
 
-                  </div>
+                <div
+                  className="flex project-icons"
+                >
 
                   <a
-                    className="link flex"
+                    className="icon-link"
                     href={item.live}
                     target="_blank"
                     rel="noreferrer"
-                  >
-                    more
+                    aria-label={`${item.title} live demo`}
+                  />
 
-                    <span
-                      style={{ alignSelf: "end" }}
-                      className="icon-arrow-right"
-                    ></span>
-                  </a>
+                  {item.github && (
+                    <a
+                      className="icon-github"
+                      href={item.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${item.title} GitHub`}
+                    />
+                  )}
 
                 </div>
 
+
+                <a
+                  className="link flex"
+                  href={item.live}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  More
+
+                  <span
+                    className="icon-arrow-right"
+                  />
+                </a>
+
               </div>
 
-            </article>
-          );
-        })}
+            </div>
+
+          </article>
+        ))}
 
       </section>
 

@@ -35,7 +35,7 @@ html {
 }
 
 .light {
-   --primary: rgb(250, 250, 250);
+  --primary: rgb(250, 250, 250);
   --secondary: rgb(255, 255, 255);
   --border: rgba(202, 202, 202, 0.518);
 
@@ -51,44 +51,44 @@ html {
 body {
   background-color: var(--primary);
   color: #fff;
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
 .container {
   border: 2px solid var(--border);
   width: 80%;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   background-color: var(--secondary);
   padding: 0 var(--container-padding);
+  overflow: hidden;
 }
 
 .divider {
   border-bottom: 1px solid var(--border);
 
   margin: 3rem 0;
-  width: calc(100% + var(--container-padding) + var(--container-padding));
+
+  width: calc(
+    100% + var(--container-padding) + var(--container-padding)
+  );
+
   margin-left: calc(var(--container-padding) * -1);
 }
 
 li {
   list-style: none;
 }
+
 a {
   all: unset;
-
   transition: 0.2s;
 }
+
 a:hover {
   cursor: pointer;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-}
-
-.border {
-  border: 2px solid red;
 }
 
 button {
@@ -102,23 +102,148 @@ button:hover {
 button:active {
   scale: 0.9;
 }
-button:disabled{
-  opacity: 0.4 ;
+
+button:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.border {
+  border: 2px solid red;
+}
+
+/* =========================
+   Scroll To Top
+========================= */
+
+.scroll2Top {
+  background-color: rgba(25, 118, 210, 0.85);
+
+  width: 2.6rem;
+  height: 2.6rem;
+
+  border-radius: 50%;
+
+  position: fixed;
+
+  bottom: 2rem;
+  right: 3%;
+
+  text-align: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 1.25rem;
+
+  z-index: 999;
+}
+
+.scroll2Top:hover {
+  background-color: rgb(25, 118, 210);
+}
+
+/* =========================
+   Tablet
+========================= */
+
 @media (max-width: 1000px) {
-  .container {
+  :root {
     --container-padding: 1.7rem;
+  }
+
+  .container {
     width: 90%;
     padding: 0 var(--container-padding);
   }
 
   .divider {
-    width: calc(100% + var(--container-padding) + var(--container-padding));
+    width: calc(
+      100% + var(--container-padding) + var(--container-padding)
+    );
+
     margin-left: calc(var(--container-padding) * -1);
   }
 }
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 96%;
+    max-width: 100%;
+    padding: 0 var(--container-padding);
+
+    border-width: 1px;
+
+    overflow: hidden;
+  }
+
+  .divider {
+    width: calc(
+      100% + var(--container-padding) + var(--container-padding)
+    );
+
+    margin-left: calc(var(--container-padding) * -1);
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .scroll2Top {
+    width: 2.2rem;
+    height: 2.2rem;
+
+    bottom: 1.2rem;
+    right: 1rem;
+
+    opacity: 0.8;
+
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   Small Phones
+========================= */
+
+@media (max-width: 380px) {
+  :root {
+    --container-padding: 0.8rem;
+  }
+
+  .container {
+    width: 97%;
+  }
+
+  .scroll2Top {
+    width: 2rem;
+    height: 2rem;
+
+    right: 0.8rem;
+    bottom: 1rem;
+
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================
+   Scrollbar
+========================= */
 
 ::-webkit-scrollbar {
   width: 0.8rem;
@@ -126,7 +251,10 @@ button:disabled{
 
 ::-webkit-scrollbar-track {
   border: 7px solid #292c3b;
-  box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
+
+  box-shadow:
+    inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
+
   border-radius: 4px;
 
   background-color: #d4d4d8;
@@ -141,39 +269,8 @@ button:disabled{
   background: #555;
 }
 
-/* for Firefox */
+/* Firefox */
+
 html {
-  scrollbar-color:var(--blue) #3d4a59;
-}
-
-.scroll2Top {
-  background-color: rgba(25, 118, 210, 0.85);
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 50%;
-  position: fixed;
-  bottom: 2rem;
-  right: 3%;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 1.25rem;
-  
-}
-
-.scroll2Top:hover {
-  background-color: rgb(25, 118, 210);
-}
-
-@media (max-width: 600px) {
-  .container {
-    width: 98%;
-    padding: 0 var(--container-padding);
-  }
-
-  .scroll2Top {
-    width: 2.2rem;
-    height: 2.2rem;
-    opacity: 0.6;
-    font-size: 1rem;
-  }
+  scrollbar-color: var(--blue) #3d4a59;
 }
