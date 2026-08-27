@@ -10,7 +10,7 @@ const myprojects = [
     image: "./Dentflow.png",
     description:
       "A dental management platform for managing patients, appointments, treatments, invoices and clinic data.",
-    live: "dentflow-frontend-delta.vercel.app/login",
+    live: "https://dentflow-demo.vercel.app/login",
     github: "https://github.com/souhaib2003/dentflow-frontend",
   },
 
